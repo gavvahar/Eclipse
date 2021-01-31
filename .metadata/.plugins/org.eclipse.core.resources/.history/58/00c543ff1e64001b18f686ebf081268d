@@ -2,11 +2,11 @@ package edu.mccc.cos210.al;
 
 import java.util.stream.IntStream;
 
-public class ArrayLecture
+public class ArrayLecture2
 {
 	public static void main(String[] args)
 	{
-		new ArrayLecture().doIt();
+		new ArrayLecture2().doIt();
 	}
 
 	private void doIt()

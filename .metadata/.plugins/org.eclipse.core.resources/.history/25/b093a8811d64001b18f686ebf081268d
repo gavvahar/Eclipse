@@ -41,6 +41,7 @@ public class ArrayLecture
 				new String[] { "angus", "susan" },
 				new String[] { "lucy", "sam", "rosebud" },
 				new String[] { "phil", "debbie", "pat", "george" },
+				new String[] { "Nihar", "Suraj", "Sanat", "Sanil", "Bharath" },
 		};
 		
 		//System.out.println(saa.length);
@@ -54,7 +55,7 @@ public class ArrayLecture
 		{
 			for (int j = 0; j < saa[i].length; j++)
 			{
-				if (!(i == saa.length && j == saa[i].length))
+				if (!(i == saa.length && j == saa.length))
 				{
 					System.out.print(saa[i][j] + " ");
 				}else {

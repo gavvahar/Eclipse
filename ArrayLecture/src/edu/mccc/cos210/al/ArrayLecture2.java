@@ -2,11 +2,11 @@ package edu.mccc.cos210.al;
 
 import java.util.stream.IntStream;
 
-public class ArrayLecture
+public class ArrayLecture2
 {
 	public static void main(String[] args)
 	{
-		new ArrayLecture().doIt();
+		new ArrayLecture2().doIt();
 	}
 
 	private void doIt()
@@ -54,14 +54,16 @@ public class ArrayLecture
 		{
 			for (int j = 0; j < saa[i].length; j++)
 			{
-				if (!(i == saa.length && j == saa[i].length))
+				/*if (!(i == saa.length && j == saa[i].length))
 				{
 					System.out.print(saa[i][j] + " ");
 				}else {
 					System.out.println(saa[i][j]);
 				}
-					
+				*/
+				System.out.print(saa[i][j] + " ");
 			}
+			System.out.println();
 		}
 		System.out.println();
 		System.out.println("hello");

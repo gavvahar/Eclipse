@@ -54,7 +54,7 @@ public class ArrayLecture
 		{
 			for (int j = 0; j < saa[i].length; j++)
 			{
-				if (!(i == saa.length && j == saa[i].length))
+				if (!(i == saa.length && j == 3))
 				{
 					System.out.print(saa[i][j] + " ");
 				}else {
