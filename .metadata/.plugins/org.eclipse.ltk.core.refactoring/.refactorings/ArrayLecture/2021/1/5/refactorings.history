@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;sa&apos; in &apos;edu.mccc.cos210.al.ArrayLecture.doIt()&apos; to &apos;na&apos;&#x0D;&#x0A;- Original project: &apos;ArrayLecture&apos;&#x0D;&#x0A;- Original element: &apos;edu.mccc.cos210.al.ArrayLecture.doIt().sa&apos;&#x0D;&#x0A;- Renamed element: &apos;sa&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;sa&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;edu.mccc.cos210.al{ArrayLecture.java[ArrayLecture~doIt@sa!170!192!176!177!\[I!0!false" name="na" references="true" stamp="1611800236325" version="1.0"/>
+</session>
