@@ -50,11 +50,11 @@ public class ArrayLecture
 		}
 		//System.out.println(saa[2][1]);
 		
-		for (int i = 0; i < saa.length; i++)
+		for (int i = 0; i < saa[i].length; i++)
 		{
 			for (int j = 0; j < saa[i].length; j++)
 			{
-				if (!(i == saa.length-1 && j == saa[i].length-1))
+				if (!(i == saa.length && j == saa[i].length))
 				{
 					System.out.print(saa[i][j] + " ");
 				}else {
