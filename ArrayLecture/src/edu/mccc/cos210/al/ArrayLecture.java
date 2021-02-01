@@ -63,7 +63,7 @@ public class ArrayLecture
 					
 			}
 		}
-		System.out.println();
+		//System.out.println();
 		System.out.println("hello");
 	}
 }
