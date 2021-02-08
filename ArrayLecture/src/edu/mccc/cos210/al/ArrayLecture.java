@@ -1,6 +1,6 @@
 package edu.mccc.cos210.al;
 
-import java.util.stream.IntStream;
+import java.util.stream.*;
 
 public class ArrayLecture
 {
