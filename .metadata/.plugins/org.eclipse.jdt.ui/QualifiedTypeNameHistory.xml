@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="java.util.stream.IntStream"/>
+    <fullyQualifiedTypeName name="java.awt.EventQueue"/>
+    <fullyQualifiedTypeName name="java.awt.Color"/>
+    <fullyQualifiedTypeName name="java.awt.BorderLayout"/>
+    <fullyQualifiedTypeName name="javax.swing.JPanel"/>
+    <fullyQualifiedTypeName name="java.awt.Dimension"/>
+    <fullyQualifiedTypeName name="java.awt.Graphics"/>
+    <fullyQualifiedTypeName name="java.awt.Graphics2D"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Rectangle2D.Double"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Rectangle2D"/>
+    <fullyQualifiedTypeName name="java.awt.geom.AffineTransform"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Ellipse2D.Double"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Path2D.Double"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Arc2D.Double"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Arc2D"/>
+    <fullyQualifiedTypeName name="java.awt.BasicStroke"/>
+    <fullyQualifiedTypeName name="java.awt.Shape"/>
 </qualifiedTypeNameHistroy>
