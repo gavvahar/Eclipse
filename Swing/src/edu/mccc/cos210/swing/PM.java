@@ -2,7 +2,6 @@ package edu.mccc.cos210.swing;
 
 import java.awt.*;
 import java.awt.geom.*;
-
 import javax.swing.*;
 
 public class PM {
