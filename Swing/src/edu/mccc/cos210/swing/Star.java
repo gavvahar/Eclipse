@@ -47,15 +47,14 @@ public class Star {
 			gat.scale(1.0, -1.0);
 			g2d.transform(gat);
 
-			//g2d.setColor(Color.BLACK);
-        	//g2d.draw(createDefaultStar(50, 200, 200));
+			
 			var s2d = createDefaultStar(50, 200, 200);
 			AffineTransform at = new AffineTransform();
 			at.rotate(Math.toRadians(rotation1));
 			rotation1 += rotDelta1;
 			Shape s = at.createTransformedShape(s2d);
-			g2d.setPaint(new Color(128, 128, 0));
-			g2d.fill(s);
+			//g2d.setPaint(new Color(128, 128, 0));
+			//g2d.fill(s);
 			g2d.setPaint(Color.BLACK);
 			g2d.draw(s);
 

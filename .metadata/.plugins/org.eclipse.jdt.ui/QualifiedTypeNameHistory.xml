@@ -11,10 +11,10 @@
     <fullyQualifiedTypeName name="java.awt.geom.Rectangle2D.Double"/>
     <fullyQualifiedTypeName name="java.awt.geom.Rectangle2D"/>
     <fullyQualifiedTypeName name="java.awt.geom.AffineTransform"/>
-    <fullyQualifiedTypeName name="java.awt.geom.Ellipse2D.Double"/>
-    <fullyQualifiedTypeName name="java.awt.geom.Path2D.Double"/>
     <fullyQualifiedTypeName name="java.awt.geom.Arc2D.Double"/>
     <fullyQualifiedTypeName name="java.awt.geom.Arc2D"/>
     <fullyQualifiedTypeName name="java.awt.BasicStroke"/>
     <fullyQualifiedTypeName name="java.awt.Shape"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Ellipse2D.Double"/>
+    <fullyQualifiedTypeName name="java.awt.geom.Path2D.Double"/>
 </qualifiedTypeNameHistroy>
