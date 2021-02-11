@@ -45,13 +45,21 @@ public class Heart
 			g2d.transform(gat);
 			Path2D p2d = new Path2D.Double();
 			p2d.moveTo(0.0, 0.0);
-			p2d.quadTo(-100.00, -100.0, 200.0, 200.0);
-			p2d.curveTo(300.0, 300.0, 100.0, -100.00, 100.0, 100.0);
+			//p2d.quadTo(-100.00, -100.0, 200.0, 200.0);
+			//p2d.curveTo(-100.0, 300.0, 100.0, -100.00, 300.0, 100.0);
+			p2d.curveTo(0.0, 150.0, -250.0, 0.0, 0.0, -150.0);
+			p2d.moveTo(0.0, 0.0);
+			p2d.curveTo(0.0, 150.0, 250.0, 0.0, 0.0, -150.0);
 			p2d.closePath();
+			AffineTransform at = new AffineTransform();
+			//at.scale(200.0, 200.0);
+			Shape s = at.createTransformedShape(p2d);
+			
+			g2d.setPaint(Color.BLACK);
+			g2d.setStroke(new BasicStroke(5.0f));
+			g2d.draw(s);
 			g2d.setPaint(Color.RED);
 			g2d.fill(p2d);
-			g2d.setPaint(Color.BLACK);
-			g2d.setStroke(new BasicStroke(3.0f));
 			g2d.dispose();
 			Toolkit.getDefaultToolkit().sync();
 		}
