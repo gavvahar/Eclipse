@@ -10,7 +10,6 @@ public class Doubles
 	{
 		try (BufferedReader br = new BufferedReader(new FileReader("./data/pocket.dic")))
 		{
-			//br.lines().forEach(System.out::println);
 			br.lines().forEach(word -> {
 				char prevChar = word.charAt(0);
 				char prevPrevChar = ' ';
