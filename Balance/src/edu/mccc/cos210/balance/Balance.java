@@ -30,7 +30,8 @@ public class Balance
 				theStack.push(t);
 			} else {
 				if (t.matches("[\\)\\]]")) {
-//					Your Code Here					
+					String leftPair = theStack.pop();
+					b = isPair(t, leftPair);
 				}
 			}
 		}
@@ -43,7 +44,10 @@ public class Balance
 	@SuppressWarnings("unused")
 	private boolean isPair(String open, String close) {
 		boolean b = false;
-//		Your Code Here					
+		if(open == close)
+		{
+			b = true;
+		}
 		return b;
 	}
 }
