@@ -36,7 +36,11 @@ public class Balance
 				if (t.matches("[\\)\\]]"))
 				{
 					String leftPair = theStack.pop();
-					b = isPair(leftPair, t);
+					if(!isPair(leftPair, t))
+					{
+						b = false;
+						break;
+					}
 				}
 			}
 		}
