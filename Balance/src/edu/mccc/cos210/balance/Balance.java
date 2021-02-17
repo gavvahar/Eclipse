@@ -11,7 +11,8 @@ public class Balance
 	}
 	private void doIt(Scanner scanner)
 	{
-		while (scanner.hasNext()) {
+		while (scanner.hasNext())
+		{
 			String s = scanner.next();
 			System.out.println(
 				s +
@@ -24,14 +25,18 @@ public class Balance
 	{
 		boolean b = true;
 		IStack<String> theStack = new Stack<>();
-		for (int i = 0; i < s.length(); i++) {
+		for (int i = 0; i < s.length(); i++)
+		{
 			String t = String.valueOf(s.charAt(i));
-			if (t.matches("[\\(\\[]")) {
+			if (t.matches("[\\(\\[]"))
+			{
 				theStack.push(t);
-			} else {
-				if (t.matches("[\\)\\]]")) {
+			} else
+			{
+				if (t.matches("[\\)\\]]"))
+				{
 					String leftPair = theStack.pop();
-					b = isPair(t, leftPair);
+					b = isPair(leftPair, t);
 				}
 			}
 		}
@@ -42,11 +47,14 @@ public class Balance
 		return b;
 	}
 	@SuppressWarnings("unused")
-	private boolean isPair(String open, String close) {
+	private boolean isPair(String open, String close)
+	{
 		boolean b = false;
-		if(open == close)
+		System.out.print(open + " "  + close);
+		if((open.matches("[\\[]") && close.matches("[\\]]")) ||
+				(open.matches("[\\(]") && close.matches("[\\)]")))
 		{
-			b = true;
+			b= true;
 		}
 		return b;
 	}
