@@ -11,9 +11,9 @@ public class TestIQueue1 {
 
 	private void doIt() {
 		IQueue<Integer> queue = new Queue<>();
-		queue.enqueu(1);
-		queue.enqueu(2);
-		queue.enqueu(3);
+		queue.enqueue(1);
+		queue.enqueue(2);
+		queue.enqueue(3);
 		System.out.println(queue.peek());
 		queue.dequeue();
 		int n = queue.dequeue();

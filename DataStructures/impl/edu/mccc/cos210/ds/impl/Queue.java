@@ -7,7 +7,7 @@ public class Queue<T> implements IQueue<T>
 {
 	ISinglyLinkedList<T> theList = new SinglyLinkedList<>();
 	@Override
-	public void enqueu(T data)
+	public void enqueue(T data)
 	{
 		theList.addLast(data);
 
