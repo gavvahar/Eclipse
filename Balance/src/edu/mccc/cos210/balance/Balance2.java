@@ -2,12 +2,12 @@ package edu.mccc.cos210.balance;
 import java.util.Scanner;
 import edu.mccc.cos210.ds.IStack;
 import edu.mccc.cos210.ds.impl.Stack;
-public class Balance
+public class Balance2
 {
 	public static void main(String[] args)
 	{
 		Scanner scanner = new Scanner(System.in);
-		new Balance().doIt(scanner);
+		new Balance2().doIt(scanner);
 	}
 	private void doIt(Scanner scanner)
 	{
@@ -33,14 +33,16 @@ public class Balance
 				theStack.push(t);
 			} else
 			{
-				if (t.matches("[\\)\\]]"))
+				if (theStack.isEmpty())
 				{
-					String leftPair = theStack.pop();
-					if(!isPair(leftPair, t))
-					{
-						b = false;
-						break;
-					}
+					b = false;
+					break;
+				}
+				String u = theStack.pop();
+				if(!isPair(u, t))
+				{
+					b = false;
+					break;
 				}
 			}
 		}
@@ -54,10 +56,11 @@ public class Balance
 	private boolean isPair(String open, String close)
 	{
 		boolean b = false;
-		if((open.matches("[\\[]") && close.matches("[\\]]")) ||
-				(open.matches("[\\(]") && close.matches("[\\)]")))
+		if(
+			"(".equals(open) && ")".equals(close) ||
+			"[".equals(open) && "]".equals(close))
 		{
-			b= true;
+			b = true;
 		}
 		return b;
 	}
