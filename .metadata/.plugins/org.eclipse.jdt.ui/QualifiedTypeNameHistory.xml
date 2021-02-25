@@ -18,7 +18,9 @@
     <fullyQualifiedTypeName name="java.awt.geom.Ellipse2D.Double"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="edu.mccc.cos210.ds.IArray"/>
+    <fullyQualifiedTypeName name="edu.mccc.cos210.CollectorTest4"/>
     <fullyQualifiedTypeName name="java.util.stream.IntStream"/>
     <fullyQualifiedTypeName name="edu.mccc.cos210.ds.util.Utility"/>
-    <fullyQualifiedTypeName name="edu.mccc.cos210.ds.IArray"/>
+    <fullyQualifiedTypeName name="java.util.Comparator"/>
 </qualifiedTypeNameHistroy>
