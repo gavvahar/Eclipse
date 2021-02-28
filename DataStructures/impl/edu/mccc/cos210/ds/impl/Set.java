@@ -118,12 +118,33 @@ public class Set<T> implements ISet<T> {
 	@Override
 	public ISet<T> union(ISet<T> set) {
 		ISet<T> theUnion = new Set<>();
+		theUnion.addAll(this);
+		IDoublyLinkedList<T> dll = set.asList();
+		Iterator<T> it = dll.iterator();
+		while (it.hasNext())
+		{
+			T data = it.next();
+			if (!contains(data))
+			{
+				theUnion.add(data);
+			}
+		}
 		return theUnion;
 	}
 
 	@Override
 	public ISet<T> intersection(ISet<T> set) {
 		ISet<T> theIntersection = new Set<>();
+		IDoublyLinkedList<T> dll = set.asList();
+		Iterator<T> it = dll.iterator();
+		while (it.hasNext())
+		{
+			T data = it.next();
+			if (contains(data))
+			{
+				theIntersection.add(data);
+			}
+		}
 		return theIntersection;
 	}
 

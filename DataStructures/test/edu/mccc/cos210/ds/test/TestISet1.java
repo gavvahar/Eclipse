@@ -80,7 +80,7 @@ public class TestISet1 {
 		st.add("aid");
 		st.add("of");
 		st.add("their");
-		st.add("party");		
+		st.add("party");
 		System.out.println(st);
 		System.out.println(ss.union(st));
 		System.out.println(ss.intersection(st));
