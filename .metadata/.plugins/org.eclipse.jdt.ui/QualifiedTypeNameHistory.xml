@@ -23,4 +23,5 @@
     <fullyQualifiedTypeName name="java.util.stream.IntStream"/>
     <fullyQualifiedTypeName name="edu.mccc.cos210.ds.util.Utility"/>
     <fullyQualifiedTypeName name="java.util.Comparator"/>
+    <fullyQualifiedTypeName name="edu.mccc.cos210.ds.IMap"/>
 </qualifiedTypeNameHistroy>
