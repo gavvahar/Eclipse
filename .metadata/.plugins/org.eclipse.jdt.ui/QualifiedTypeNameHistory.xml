@@ -21,7 +21,11 @@
     <fullyQualifiedTypeName name="edu.mccc.cos210.ds.IArray"/>
     <fullyQualifiedTypeName name="edu.mccc.cos210.CollectorTest4"/>
     <fullyQualifiedTypeName name="java.util.stream.IntStream"/>
-    <fullyQualifiedTypeName name="edu.mccc.cos210.ds.util.Utility"/>
     <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="edu.mccc.cos210.ds.IMap"/>
+    <fullyQualifiedTypeName name="java.util.stream.Collector"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.nio.file.Files"/>
+    <fullyQualifiedTypeName name="java.nio.file.Paths"/>
+    <fullyQualifiedTypeName name="edu.mccc.cos210.ds.util.Utility"/>
 </qualifiedTypeNameHistroy>

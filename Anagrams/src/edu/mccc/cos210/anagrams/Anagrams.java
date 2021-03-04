@@ -1,45 +1,98 @@
 package edu.mccc.cos210.anagrams;
-import java.io.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+import java.util.stream.Collector;
 
+import edu.mccc.cos210.ds.ISinglyLinkedList;
+import edu.mccc.cos210.ds.impl.SinglyLinkedList;
+import edu.mccc.cos210.ds.util.Utility;
 public class Anagrams {
-	public static void main(String[] args) throws Exception
+	private ISinglyLinkedList<Holder> theWords = loadWords();
+	public static void main(String[] args)
 	{
 		new Anagrams().doIt();
 	}
 	
-	private void doIt() throws Exception
+	private void doIt()
 	{
-		try (BufferedReader br = new BufferedReader(new FileReader("./data/pocket.dic")))
-		{
-			br.lines().forEach(word -> {
-	        int n = word.length();
-	        permute(word, 0, n - 1);
-			});
-		} catch (Exception ex)
-		{
-			System.err.println(ex);
-			System.exit(-1);
+		String word = "quit";
+		try (
+				Scanner scanner = new Scanner(System.in);
+		) {
+			while (true)
+			{
+				word = scanner.next();
+				if("quit".equals(word))
+				{
+					break;
+				}
+				displayAnagrams(findAnagrams(word));
+			}
+		} finally {
+			System.out.println("Bye!");
 		}
     }
-    private void permute(String str, int l, int r) 
-    { 
-        if (l == r) 
-            System.out.println(str); 
-        else { 
-            for (int i = l; i <= r; i++) { 
-                str = swap(str, l, i); 
-                permute(str, l + 1, r); 
-                str = swap(str, l, i); 
-            } 
-        } 
-    }
-    public String swap(String a, int i, int j) 
-    { 
-        char temp; 
-        char[] charArray = a.toCharArray(); 
-        temp = charArray[i]; 
-        charArray[i] = charArray[j]; 
-        charArray[j] = temp; 
-        return String.valueOf(charArray); 
-    } 
+	private void displayAnagrams(ISinglyLinkedList<String> list)
+	{
+		list.stream().forEach(System.out::println);
+	}
+	private ISinglyLinkedList<String> findAnagrams(String word)
+	{
+		Holder h = new Holder(word);
+		return theWords.parallelStream()
+				.filter(w -> h.key.length() == w.key.length())
+				.filter(w -> h.key.equals(w.key))
+				.map(w -> w.word)
+				.collect(Utility.toSinglyLinkedList())
+				;
+	}
+	private ISinglyLinkedList<Holder> loadWords()
+	{
+		try
+		{
+			return Files.lines(
+				Paths.get("./data/pocket.dic"))
+					.map(w -> new Holder(w))
+					.peek(System.out::println)
+					.collect(Utility.toSinglyLinkedList())
+					;
+		} catch (IOException ex)
+		{
+			ex.printStackTrace();
+			System.exit(-1);
+		}
+		return new SinglyLinkedList<Holder>();
+	}
+	private static class Holder
+	{
+		private String word;
+		private String key;
+		private Holder(String s)
+		{
+			this.word = s;
+			this.key = computeKey(s);
+		}
+		private String computeKey(String word)
+		{
+			return word.chars()
+					.sorted()
+					.mapToObj(n -> String.valueOf((char) n))
+					.collect(
+						Collector.of(
+								StringBuilder::new,
+								StringBuilder::append,
+								StringBuilder::append,
+								StringBuilder::toString
+						)
+					)
+				;
+		}
+		@Override
+		public String toString()
+		{
+			return word + " - " + key;
+		}
+	}
 }
