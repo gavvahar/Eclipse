@@ -68,55 +68,11 @@ public class Chess {
 				}
 			}
 			
-			//TOP BUTTONS
-			JPanel topLayout = new JPanel(new GridBagLayout());
-			JPanel topButtons = new JPanel(new GridLayout(1, 2, 5, 0));
-				
-			JButton defaultPlacement = new JButton("Default Placement");
-			JButton clearButton = new JButton("Clear Board");
-			topButtons.add(defaultPlacement);
-			topButtons.add(clearButton);
-			
-			topLayout.add(topButtons);
-			topLayout.setBackground(Color.BLACK);
-			topButtons.setBackground(Color.BLACK);
+			JPanel topLayout = getTopButtons();
 			jf.add(topLayout, BorderLayout.NORTH);
 			
 			
-			//Bottom Buttons
-			JPanel pbLayout = new JPanel(new GridBagLayout());
-			JPanel botButtons = new JPanel(new GridLayout(1, 12, 5, 0));
-				
-			JButton WKing = new JButton("\u2654");
-			JButton WQueen = new JButton("\u2655");
-			JButton WRook = new JButton("\u2656");
-			JButton WBishop = new JButton("\u2657");
-			JButton WKnight = new JButton("\u2658");
-			JButton WPawn = new JButton("\u2659");
-				
-			JButton BKing = new JButton("\u265A");
-			JButton BQueen = new JButton("\u265B");
-			JButton BRook = new JButton("\u265C");
-			JButton BBishop = new JButton("\u265D");
-			JButton BKnight = new JButton("\u265E");
-			JButton BPawn = new JButton("\u265F");
-			
-			botButtons.add(WKing);
-			botButtons.add(WQueen);
-			botButtons.add(WRook);
-			botButtons.add(WBishop);
-			botButtons.add(WKnight);
-			botButtons.add(WPawn);
-			botButtons.add(BKing);
-			botButtons.add(BQueen);
-			botButtons.add(BRook);
-			botButtons.add(BBishop);
-			botButtons.add(BKnight);
-			botButtons.add(BPawn);
-				
-			pbLayout.add(botButtons);
-			pbLayout.setBackground(Color.BLACK);
-			botButtons.setBackground(Color.BLACK);
+			JPanel pbLayout = getBottomButtons();
 			jf.add(pbLayout, BorderLayout.SOUTH);
 			
 			jf.add(jp, BorderLayout.CENTER);
@@ -125,7 +81,60 @@ public class Chess {
 			jf.setResizable(false);
 			jf.setVisible(true);
 		}
+	//TOP BUTTONS
+	private JPanel getTopButtons()
+	{
+		JPanel topLayout = new JPanel(new GridBagLayout());
+	JPanel topButtons = new JPanel(new GridLayout(1, 2, 5, 0));
+		
+	JButton defaultPlacement = new JButton("Default Placement");
+	JButton clearButton = new JButton("Clear Board");
+	topButtons.add(defaultPlacement);
+	topButtons.add(clearButton);
 	
+	topLayout.add(topButtons);
+	topLayout.setBackground(Color.BLACK);
+	topButtons.setBackground(Color.BLACK);
+	return topLayout;
+	}
+	//Bottom Buttons
+	private JPanel getBottomButtons()
+	{
+		JPanel pbLayout = new JPanel(new GridBagLayout());
+		JPanel botButtons = new JPanel(new GridLayout(1, 12, 5, 0));
+			
+		JButton WKing = new JButton("\u2654");
+		JButton WQueen = new JButton("\u2655");
+		JButton WRook = new JButton("\u2656");
+		JButton WBishop = new JButton("\u2657");
+		JButton WKnight = new JButton("\u2658");
+		JButton WPawn = new JButton("\u2659");
+			
+		JButton BKing = new JButton("\u265A");
+		JButton BQueen = new JButton("\u265B");
+		JButton BRook = new JButton("\u265C");
+		JButton BBishop = new JButton("\u265D");
+		JButton BKnight = new JButton("\u265E");
+		JButton BPawn = new JButton("\u265F");
+		
+		botButtons.add(WKing);
+		botButtons.add(WQueen);
+		botButtons.add(WRook);
+		botButtons.add(WBishop);
+		botButtons.add(WKnight);
+		botButtons.add(WPawn);
+		botButtons.add(BKing);
+		botButtons.add(BQueen);
+		botButtons.add(BRook);
+		botButtons.add(BBishop);
+		botButtons.add(BKnight);
+		botButtons.add(BPawn);
+			
+		pbLayout.add(botButtons);
+		pbLayout.setBackground(Color.BLACK);
+		botButtons.setBackground(Color.BLACK);
+		return pbLayout;
+	}
 public static void main(String... args) {
 	EventQueue.invokeLater(Chess::new);
 }
@@ -139,7 +148,7 @@ public class Square extends JPanel {
 		setEnabled(true);
 		this.row = row;
 		this.col = col;
-		//
+		
 		
 		
 		//if((row!=0 && col!=0 && (row + col) % 2 == 0 )) {
