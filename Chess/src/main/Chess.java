@@ -2,9 +2,6 @@ package main;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.geom.Ellipse2D;
-import java.beans.*;
-
 import javax.swing.*;
 
 public class Chess {
