@@ -23,7 +23,7 @@ public class Chess {
 		
 
 		jp.setLayout(new GridLayout(SIZE, SIZE));
-		jp.setBorder(BorderFactory.createLineBorder(Color.black, 10));
+		jp.setBorder(BorderFactory.createLineBorder(Color.black,5));
 				
 		jp.setPreferredSize(new Dimension(800 / SIZE, 800 / SIZE));
 		//PropertyChangeListener pcl = this::propertyChange;
@@ -42,13 +42,20 @@ public class Chess {
 			}
 		}
 
-		JPanel leftPanel = getLeftPanel();
+		JPanel leftPanel = getLeftBottomPanel(false);
 		jf.add(leftPanel, BorderLayout.WEST);
+
+		JPanel bottomPanel = getLeftBottomPanel(true);
+		jf.add(bottomPanel, BorderLayout.SOUTH);
+
 
 		JPanel rightPanel = new JPanel();
 		rightPanel.setBackground(Color.BLACK);
 		jf.add(rightPanel, BorderLayout.EAST);
-		
+
+		JPanel topPanel = new JPanel();
+		topPanel.setBackground(Color.BLACK);
+		jf.add(topPanel, BorderLayout.NORTH);
 
 		jf.add(jp, BorderLayout.CENTER);
 		jf.setSize(800, 800);
@@ -101,21 +108,41 @@ public class Chess {
 		return strPiece;
 
 	}
-	private JPanel getLeftPanel()	{
-		JPanel pbLayout = new JPanel(new GridBagLayout());
+	private JPanel getLeftBottomPanel(boolean alphabet)	{
+		JPanel panelLayout = new JPanel(new GridBagLayout());
 		//GridLayout(int rows, int cols, int hgap, int vgap)
-		JPanel leftPanelNumbers = new JPanel(new GridLayout(8, 1, 0, 50));
+		JPanel panelLeftBottom;  
+		String alpha[] = {"A", "B","C","D","E", "F", "G","H"};
+		String numbers[] = {"8","7","6","5","4","3","2","1"};
+		String arr[];
 
-		for (int row = 7; row >= 0; row--) {
-			JPanel jb = new JPanel( String.valueOf(row) );
-			
-			leftPanelNumbers.add(jb);
+		if (alphabet){
+			arr = alpha;
+			panelLeftBottom = new JPanel(new GridLayout(1, 8, 43, 0));
+		//	JButton jb = new JButton("");
+		//	panelLeftBottom.add(jb);
+		} else {
+			arr = numbers;
+			panelLeftBottom = new JPanel(new GridLayout(8, 1, 0, 60));
+		}
+
+		for (int index = 0; index < arr.length ;index++) {
+
+			JPanel jp = new JPanel();
+			jp.setPreferredSize(new Dimension(43, 40));
+			JLabel jl = new JLabel( arr[index] );
+			jl.setFont(new Font("Serif", Font.BOLD, 18));
+			jl.setForeground(Color.ORANGE);
+			jp.add(jl);
+
+			jp.setBackground(Color.BLACK);
+			panelLeftBottom.add(jp);
 		}
 			
-		pbLayout.add(leftPanelNumbers);
-		pbLayout.setBackground(Color.BLACK);
-		leftPanelNumbers.setBackground(Color.BLACK);
-		return pbLayout;
+		panelLayout.add(panelLeftBottom);
+		panelLayout.setBackground(Color.BLACK);
+		panelLeftBottom.setBackground(Color.BLACK);
+		return panelLayout;
 	}
 
 	public static void main(String... args) {
