@@ -115,12 +115,12 @@ public class Chess {
 
 		if (alphabet){
 			arr = alpha;
-			panelLeftBottom = new JPanel(new GridLayout(1, 8, 43, 0));
+			panelLeftBottom = new JPanel(new GridLayout(1, 8, 47, 0));
 		//	JButton jb = new JButton("");
 		//	panelLeftBottom.add(jb);
 		} else {
 			arr = numbers;
-			panelLeftBottom = new JPanel(new GridLayout(8, 1, 0, 60));
+			panelLeftBottom = new JPanel(new GridLayout(8, 1, 0, 45));
 		}
 
 		for (int index = 0; index < arr.length ;index++) {

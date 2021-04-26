@@ -45,4 +45,35 @@ public class Square extends JPanel {
 							
 			g2d.dispose();
 		}
+		//26
+		
+		
+		public Color getBackground() {
+			return this.cellColor;
+		}
+		
+		public void setCellColor(Color color) {
+			this.cellColor = color;
+		}
+		
+		public Color getCellColor() {
+			return cellColor;
+		}
+		
+		public void highlight() {
+			Color color = this.cellColor;
+			
+			if (color == Color.BLACK || color == Color.WHITE) {
+				setCellColor(Color.YELLOW);
+				} else if ((cellColor == Color.YELLOW) && (row + col) % 2 == 0 ) {
+					setCellColor(Color.WHITE);
+				} else if (cellColor == Color.YELLOW) {
+					setCellColor(Color.BLACK);
+				}
+			}
+		
+		
+		
+		//26
+		
 }
