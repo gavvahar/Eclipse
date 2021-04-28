@@ -62,7 +62,7 @@ public class Chess {
 	}
 
 	private Piece getInitialPieces(int row, int col)	{
-		int pieceSize = 70;
+		//int pieceSize = 70;
 		String pawn = "\u265F";
 		Color color = Color.GREEN;
 		String strPiece = "";
