@@ -11,8 +11,6 @@ public class Chess {
 	private Square endSpot = null;
 	private JPanel jp = new JPanel();
 	//private Piece[][] pieces = new Piece[SIZE][SIZE];
-	
-	
 		
 	public Chess() {
 		
@@ -146,6 +144,4 @@ public class Chess {
 	public static void main(String... args) {
 		EventQueue.invokeLater(Chess::new);
 	}
-
 }
-

@@ -13,11 +13,6 @@ public class ChessMouseListener extends MouseAdapter
         square.highlight();
         //26
         square.getParent().repaint();
-
-        } else if (e.getButton() == 1) {
-        	
-            square.highlightEndPoint();
-            square.getParent().repaint();
         }
     }
     

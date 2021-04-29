@@ -56,44 +56,18 @@ public class Square extends JPanel
 	public Color getCellColor() {
 		return cellColor;
 	}
-	
 		
-		public void highlight() {
-			Color color = this.cellColor;
-			//28
-			Square startSpot = new Square(row,col,piece);
-			//28
-			if (color == Color.BLACK || color == Color.WHITE) {
-				setCellColor(Color.YELLOW);
-				} else if ((cellColor == Color.YELLOW) && (row + col) % 2 == 0 ) {
-					setCellColor(Color.WHITE);
-				} else if (cellColor == Color.YELLOW) {
-					setCellColor(Color.BLACK);
-				}
-	    	if (piece.pieceType.equals("\u265B")) {
-	    		System.out.println("It is a queen");
-	    	}
-				
-			}
-				
-		
-		
-		public void highlightEndPoint() {
-			Color color = this.cellColor;
-			Square endSpot = new Square(row,col,piece);
-			
-			if (color == Color.BLACK || color == Color.WHITE) {
-				setCellColor(Color.GREEN);
-			
+	public void highlight() {
+		Color color = this.cellColor;
+		//28
+		Square startSpot = new Square(row,col,piece);
+		//28
+		if (color == Color.BLACK || color == Color.WHITE) {
+			setCellColor(Color.YELLOW);
+			} else if ((cellColor == Color.YELLOW) && (row + col) % 2 == 0 ) {
+				setCellColor(Color.WHITE);
+			} else if (cellColor == Color.YELLOW) {
+				setCellColor(Color.BLACK);
+			}		
 		}
-			//JOptionPane.showMessageDialog(null, "THE MOVE IS VALID", "MESSAGE", JOptionPane.INFORMATION_MESSAGE);
-		}
-		
-		
-		
-		
-		//26
-		
-
-	}
-
+}

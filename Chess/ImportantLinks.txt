@@ -1,0 +1,2 @@
+http://www.java2s.com/Tutorial/Java/0240__Swing/UnicodewithLabel.htm
+https://www.geeksforgeeks.org/design-a-chess-game/

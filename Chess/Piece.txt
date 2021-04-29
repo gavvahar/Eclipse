@@ -8,12 +8,6 @@ public class Piece{
     public int size;
     public Piece(Color color, String pieceType){
         this.color = color;
-        this.pieceType = pieceType;
-        
-        }
-        public String getPieceType() {
-        	return pieceType;
-        }
-
-    
+        this.pieceType = pieceType;   
+    }   
 }
