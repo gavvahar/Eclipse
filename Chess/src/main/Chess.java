@@ -1,20 +1,23 @@
 package main;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
+
 import javax.swing.*;
 
 public class Chess
 {
 	private static final int SIZE = 8;
-	private Square[][] squares;
+	//private Square[][] squares;
 	private java.util.Set<Square> hotSpots = new java.util.HashSet<>();
 	private Square startSpot = null;
 	private Square endSpot = null;
 	private JPanel jp = new JPanel();
+	private Board board = Board.getInstance();
 	//private Piece[][] pieces = new Piece[SIZE][SIZE];	
 	public Chess()
 	{	
-		JFrame jf = new JFrame("Chess");
+		JFrame jf = new JFrame("\u2655" + "Chess" + "\u2654");
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
@@ -24,7 +27,7 @@ public class Chess
 		jp.setPreferredSize(new Dimension(800 / SIZE, 800 / SIZE));
 		//PropertyChangeListener pcl = this::propertyChange;
 		MouseListener ml = new ChessMouseListener();
-		this.squares = new Square[SIZE][SIZE];
+		//this.squares = new Square[SIZE][SIZE];
 
 		for (int row = 0; row < SIZE; row++)
 		{
@@ -33,7 +36,7 @@ public class Chess
 				Piece piece = getInitialPieces(row,col);
 				Square square = new Square(row, col, piece);
 				jp.add(square);
-				this.squares[row][col] = square;
+				board.squares[row][col] = square;
 				//spot.addPropertyChangeListener(pcl);	
 				square.addMouseListener(ml);
 			}
@@ -52,6 +55,17 @@ public class Chess
 
 		JPanel topPanel = new JPanel();
 		topPanel.setBackground(Color.BLACK);
+		JButton jb = new JButton("Randomize");
+		jb.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				RandomBoard();
+				jf.repaint();
+			}
+		}
+		);
+		topPanel.add(jb);
 		jf.add(topPanel, BorderLayout.NORTH);
 
 		jf.add(jp, BorderLayout.CENTER);
@@ -59,21 +73,25 @@ public class Chess
 		jf.setLocationRelativeTo(null);
 		jf.setResizable(false);
 		jf.setVisible(true);
+		jf.setCursor(Cursor.HAND_CURSOR);
+
 	}
 
 	private Piece getInitialPieces(int row, int col)
 	{
 		//int pieceSize = 70;
 		String pawn = "\u265F";
-		Color color = Color.GREEN;
+		Color color = null;
 		String strPiece = "";
 		
 		if (row == 0 )
 		{
+			color  = Color.GREEN;
 			strPiece = getPiece(row,col);
 		}
 		else if (row == 1 )
 		{
+			color  = Color.GREEN;
 			strPiece = pawn;
 		} else if ( row == 6 )
 		{
@@ -86,6 +104,73 @@ public class Chess
 		}
 		return ( new Piece(color, strPiece));
 	}
+	
+	public void RandomBoard()
+    {
+        String pawn = "\u265F";
+        String queen = "\u265B";
+		String king = "\u265A";
+		String castle = "\u265C";
+		String knight = "\u265E";
+		String bishop = "\u265D";
+        String[] pieces = {queen, castle, knight, bishop, castle, knight, bishop, ""};
+
+        Random random = new Random();
+
+		int nextGreenPiece = 0;
+		int nextRedPiece = 0;
+
+		for(int row = 0; row < SIZE; row++)
+        {
+            for(int col = 0; col < SIZE; col++)
+            {
+				board.squares[row][col].getPiece().pieceType = "";
+				board.squares[row][col].getPiece().color = null;
+			    
+        	}
+    	}
+
+		for(int i = 0; i < SIZE * 4; i++)
+		{
+			int nextRow = random.nextInt(SIZE);
+			int nextCol = random.nextInt(SIZE);
+			if(i < SIZE)
+			{
+                board.squares[nextRow][nextCol].getPiece().pieceType = pieces[nextGreenPiece];
+				board.squares[nextRow][nextCol].getPiece().color = Color.GREEN;
+				nextGreenPiece++;
+			} else
+			{
+				if(i < SIZE * 2)
+				{
+					board.squares[nextRow][nextCol].getPiece().color = Color.GREEN;
+					board.squares[nextRow][nextCol].getPiece().pieceType = pawn;
+				}else
+				{
+					if(i < SIZE * 3)
+					{
+						board.squares[nextRow][nextCol].getPiece().color = Color.RED;
+						board.squares[nextRow][nextCol].getPiece().pieceType = pieces[nextRedPiece];
+						nextRedPiece++;
+					}else
+					{
+						board.squares[nextRow][nextCol].getPiece().color = Color.RED;
+						board.squares[nextRow][nextCol].getPiece().pieceType = pawn;
+					}
+				}
+			}
+		}
+		int nextRow = random.nextInt(SIZE);
+		int nextCol = random.nextInt(SIZE);
+		board.squares[nextRow][nextCol].getPiece().color = Color.GREEN;
+		board.squares[nextRow][nextCol].getPiece().pieceType = king;
+
+		nextRow = random.nextInt(SIZE);
+		nextCol = random.nextInt(SIZE);
+		board.squares[nextRow][nextCol].getPiece().color = Color.RED;
+		board.squares[nextRow][nextCol].getPiece().pieceType = king;
+	}
+
 	private String getPiece(int row, int col)
 	{
 		String strPiece = "";

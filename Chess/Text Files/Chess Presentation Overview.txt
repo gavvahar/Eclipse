@@ -1,0 +1,48 @@
+1) Introduction
+2) Project Descritpion
+3) Flowchart
+4) Demo
+5) Challenges Overcome (brief)
+
+
+
+1)
+	Aliaksandr Begins the introduction as the team leader. We then proceed to introduce ourselves
+	
+		Hello everyone, my name is Aliaksandr and I am the team leader overseeing the Chess Project. And these are my teamates
+		*Everyone else introduces themselves*
+		
+
+2)
+	Someone goes over project description
+	
+		For our project, the objective was to create a chess board and be able to determine whether or not a move is valid or invalid. To get the move in question
+		we need to have user input for the move generation. Carson will now go over the overview of our process on how we created this.
+
+3)
+	Carson goes over the flowchart and gives a brief description
+	
+		For this project we created a flowchart showing overall process simplified through order of events. To begin we hit the play button in
+		the top left of eclipse to run the program. When the program begins to run the Square function is then called to create the chess board in question.
+		After the chess board is generated the piece placeholders are then placed on the board through the getInitialPieces function and the pieces are placed
+		with the getPiece function. Now we wait for user input. You can now either close the program using the X at the top right of the program or right click
+		a piece to select it. When the piece is selected it will be hilighted yellow reflecting that it has been selecting. With a piece is selected the user
+		must now Left Click a desired location for the piece to move to. If the move is valid the piece will move to the selected location, however if it is
+		invalid the console will print invalid and nothing will happen. After this process is completed we now return back to user input and begin the 
+		sequence again. That is the overview of our process now I will send it over to Manadi to give a breif description on how we created the board itself.
+
+4)
+	Manadi Starts off the demo with how we created the chess board itself and placed the pieces
+	
+		In order to create the board itself we Created the Board.java file which contains the Board class. In this class we have the public ints startCol
+		and startRow and a Two dimensional Square Array that determines the amount of squares in the chess board. With this we set the squares to 8x8. Now 
+		that the square layout is created next we color coded them in the Square.java file inside the Square Class. Here we color coded the squares in black
+		and white. To do this we have an IF statment that checks if (row + col) sum mod 2 == 0. If so the cell color is White otherwise the cell color is Black.
+		With this the Board is now created.
+		
+
+5)
+	Nihar goes over the process of user interface and instructions
+	
+
+	Aliaksandr goes over the process of moving pieces and rules
