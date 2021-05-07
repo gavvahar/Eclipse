@@ -7,22 +7,19 @@ import javax.swing.border.MatteBorder;
 public class Square extends JPanel
 {
 	private static final long serialVersionUID = 1L;
-	private int row;
-	private int col;
+	private int row, col, place = 7;
 	private Color cellColor;
 	private static Color prevColor;
 	private Piece piece ;
 	private static Square prevSquare ;
 	private static Piece startPiece, endPiece;
-	private static boolean redCastling = true; 
-	private static boolean greenCastling = true;
+	private static boolean redCastling = true, greenCastling = true;
 	//29
 
 	private Square endSpot;
 	private Square startSpot;
 	//
-	private static int startRow,  startCol;
-	private static int endRow,  endCol;
+	private static int startRow,  startCol, endRow,  endCol;
 	private Board board = Board.getInstance();
 	
 	//
@@ -345,9 +342,7 @@ public class Square extends JPanel
 					}
 			} else if ((startCol == (endCol - 1)) || (startCol == (endCol + 1))){
 				if (((endRow - 1) == startRow) && endPiece.color == Color.RED) {
-					movePiece();
-					endPiece.pieceType = "";
-			  		endPiece.color = null;
+					killPiece();
 			  		if (endRow == 7) {
 	    				startPiece.pieceType = "\u265B";
 	    			}
@@ -426,41 +421,71 @@ public class Square extends JPanel
         int[] n = new int [8];	
         for (int i = 1; i<n.length; i ++)
 		{
-        	if(((endCol + i) == startCol) && (endRow + i) == startRow)
-            {
-        		if(startPiece.color != endPiece.color)
+        	//if (startPiece.color != endPiece.color) 
+        	//{  
+        		if(((endCol + i) == startCol) && (endRow + i) == startRow)
+        		{
+        			if (isDiagonalBlocked(startRow, startCol, endRow, endCol)) 
+        			{
+        				return false;
+        			}
+        			killPiece();
+        			return true;
+        		} else 
+        		if (((endCol - i) == startCol) && (endRow + i) == startRow) 
         		{
         			killPiece();
-        		}
-				return true;
-            } else if (((endCol - i) == startCol) && (endRow + i) == startRow) 
-            {
-        		if(startPiece.color != endPiece.color) 
+        			return true;
+        		} else 
+        		if (((endCol - i) == startCol) && (endRow - i) == startRow) 
+        		{
+        			if (isDiagonalBlocked(startRow, startCol, endRow, endCol)) 
+        			{
+        				return false;
+        			}
+        			killPiece();
+        			return true;
+        		} else 
+        		if (((endCol + i) == startCol) && (endRow - i) == startRow)
         		{
         			killPiece();
-        		}
-				return true;
-            } else if (((endCol - i) == startCol) && (endRow - i) == startRow) 
-            {
-        		if(startPiece.color != endPiece.color) 
-        		{
-        			killPiece();
-        		}
-				return true;
-            } else if (((endCol + i) == startCol) && (endRow - i) == startRow)
-            {
-        		if(startPiece.color != endPiece.color) 
-        		{
-        			killPiece();
-        		}
-				return true;
-            }  	
-        }
-			return false;
-    }
+        			return true;
+        		}  	
+        	}
+		//}
+		return false;
+		}
+    
+	private boolean isDiagonalBlocked(int sRow, int sCol, int eRow, int eCol ) 
+	{
+		if ((sRow < eRow)  && (sCol < eCol)) {
+			for (int x = sRow + 1; x <= eRow; x++)
+			{
+				for (int y = sCol + 1; y <= eCol; y++)
+				{
+					if(board.squares[x] [y].piece.pieceType != "") 
+					{
+						if ((endPiece.color != startPiece.color) && (endPiece.color != null))
+						{
+							killPiece();
+							return false;
+						}
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+		
+	}
         
     public boolean rookMove() 
     {
+    		if(startPiece.color == Color.RED && startCol == 7) {
+    			redCastling = false;
+    		} else if (startPiece.color == Color.GREEN && startCol == 7) {
+    			greenCastling = false;
+    		}
     		// see if the rook is moving in cols or rows
     		if((endCol == startCol) && (endRow != startRow))
     		{
@@ -582,39 +607,79 @@ public class Square extends JPanel
     } 
 	
 	public boolean kingMove()
-    {
+    {	
     	if (startPiece.color != endPiece.color) 
-    	{  
+    	{  	
     		if(((endCol+1) == startCol) && (endRow == startRow))
     		{
+        		if(startPiece.color == Color.RED) {
+        			redCastling = false;
+        		} else if (startPiece.color == Color.GREEN) {
+        			greenCastling = false;
+        		}
     			killPiece();
     			return true;
     		} else if (((endCol+1) == startCol) && (endRow + 1) == startRow) 
     		{
+        		if(startPiece.color == Color.RED) {
+        			redCastling = false;
+        		} else if (startPiece.color == Color.GREEN) {
+        			greenCastling = false;
+        		}
     			killPiece();
     			return true;
     		} else if (((endCol == startCol) && (endRow + 1) == startRow)) 
     		{
+        		if(startPiece.color == Color.RED) {
+        			redCastling = false;
+        		} else if (startPiece.color == Color.GREEN) {
+        			greenCastling = false;
+        		}
     			killPiece();
     			return true;
     		} else if (((endCol-1) == startCol) && (endRow + 1) == startRow)
     		{
+        		if(startPiece.color == Color.RED) {
+        			redCastling = false;
+        		} else if (startPiece.color == Color.GREEN) {
+        			greenCastling = false;
+        		}
     			killPiece();
     			return true;
     		}else if (((endCol-1) == startCol) && (endRow == startRow))
     		{
+        		if(startPiece.color == Color.RED) {
+        			redCastling = false;
+        		} else if (startPiece.color == Color.GREEN) {
+        			greenCastling = false;
+        		}
     			killPiece();
     			return true;
     		}else if (((endCol - 1) == startCol) && (endRow - 1) == startRow)
     		{
+        		if(startPiece.color == Color.RED) {
+        			redCastling = false;
+        		} else if (startPiece.color == Color.GREEN) {
+        			greenCastling = false;
+        		}
     			killPiece();
     			return true;
     		}else if (((endCol == startCol) && (endRow - 1) == startRow))
     		{
+        		if(startPiece.color == Color.RED) {
+        			redCastling = false;
+        		} else if (startPiece.color == Color.GREEN) {
+        			greenCastling = false;
+        		}
     			killPiece();
     			return true;
     		}else if (((endCol+1) == startCol) && (endRow - 1) == startRow)
     		{
+        		if(startPiece.color == Color.RED) {
+        			redCastling = false;
+        		} else if (startPiece.color == Color.GREEN) {
+        			greenCastling = false;
+        		}
     			killPiece();
     			return true;
     		} else if (((endCol - 2) == startCol) && (endRow == startRow))
@@ -624,9 +689,7 @@ public class Square extends JPanel
     				{
     					redCastling = false;
     					killPiece();
-    					board.squares[7][7].getPiece().pieceType = "";
-    					board.squares[7][7].getPiece().color = null;
-    					board.squares[7][5].getPiece().pieceType = "\u265C";
+						newRook();
     					board.squares[7][5].getPiece().color = Color.RED;
     					return true;
     				}
@@ -635,9 +698,8 @@ public class Square extends JPanel
     				{
     					greenCastling = false;
     					killPiece();
-    					board.squares[0][7].getPiece().pieceType = "";
-    					board.squares[0][7].getPiece().color = null;
-    					board.squares[0][5].getPiece().pieceType = "\u265C";
+						place = 0;
+						newRook();
     					board.squares[0][5].getPiece().color = Color.GREEN;
     					return true;
     				}
@@ -647,13 +709,6 @@ public class Square extends JPanel
 		return false; 
     }
 	
-	public void killPiece()
-	{
-		movePiece();
-        endPiece.pieceType = "";
-        endPiece.color = null;
-	}
-	
 	public void movePiece()
 	{
 		this.piece = this.startPiece;
@@ -662,5 +717,18 @@ public class Square extends JPanel
 		
 		this.prevSquare.repaint();
 		this.repaint();
+	}
+
+	public void killPiece()
+	{
+		movePiece();
+    	endPiece.pieceType = "";
+    	endPiece.color = null;
+	}
+	public void newRook()
+	{
+		board.squares[place][7].getPiece().pieceType = "";
+    	board.squares[place][7].getPiece().color = null;
+    	board.squares[place][5].getPiece().pieceType = "\u265C";
 	}
 }
