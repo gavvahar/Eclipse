@@ -92,15 +92,19 @@ public class FinalExam {
 		private int score3 = 0;
 
 		private GradeGenerator(String s) {
-			Matcher m = Pattern.compile(".*").matcher(s);
+			Matcher m = Pattern.compile("abcd abcd,999,999,999").matcher(s);
 
-			if (m.matches() && m.groupCount() == 4) {
+			if (m.matches() /*&& m.groupCount() == 4*/) {
 				name = m.group(1);
 				score1 = Integer.parseInt(m.group(2));
-				score2 = Integer.parseInt(m.group(2));
-				score3 = Integer.parseInt(m.group(2));
+				score2 = Integer.parseInt(m.group(3));
+				score3 = Integer.parseInt(m.group(4));
 				numGrade = (score1 + score2 + score3) / 3.0;
 				letterGrade = computeLetterGrade(numGrade);
+			}
+			else
+			{
+				//System.out.println(s);
 			}
 		}
 
